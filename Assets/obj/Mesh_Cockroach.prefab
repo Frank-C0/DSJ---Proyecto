@@ -110,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63480984b0dde064eae732e6edf3582c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.3
-  maxForce: 0.0004
-  wanderRingDistance: 1.18
-  wanderRingRadius: 0.53
+  maxSpeed: 3.1
+  maxForce: 1.4
+  wanderRingDistance: 1.28
+  wanderRingRadius: 1.16
   useImprovedWander: 1
-  wanderUpdateTime: 2
+  wanderUpdateTime: 1

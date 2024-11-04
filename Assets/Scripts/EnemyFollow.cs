@@ -18,6 +18,9 @@ public class EnemyFollow : MonoBehaviour
     private bool isFollowing = false;
     private Vector3 wanderingDirection;
 
+    // text mesh pro for game over
+    public TMPro.TextMeshProUGUI gameOverText;
+
     void Start()
     {
         // Asigna el Animator y Rigidbody del objeto
@@ -126,6 +129,7 @@ public class EnemyFollow : MonoBehaviour
         }
         else
         {
+            gameOverText.gameObject.SetActive(true);
             animator.SetBool("isAtacking", false);
             animator.SetBool("isWalking", true);
             Time.timeScale = 0; 

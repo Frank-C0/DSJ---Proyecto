@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Salida : MonoBehaviour
 {
+
+    // Text mesh pro text var
+    public TMPro.TextMeshProUGUI ganasteText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +24,9 @@ public class Salida : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Time.timeScale = 0; 
+            ganasteText.gameObject.SetActive(true);
             Debug.Log("Ganaste");
+            Time.timeScale = 0; 
         }
     }
 }
