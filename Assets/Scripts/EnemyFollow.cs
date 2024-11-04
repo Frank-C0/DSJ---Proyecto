@@ -12,7 +12,6 @@ public class EnemyFollow : MonoBehaviour
     public float stopDistance = 0.5f;
     public Transform target;
     private Animator animator;
-    private Rigidbody rb;
     public TMPro.TextMeshProUGUI gameOverText;
     public UnityEngine.AI.NavMeshAgent agent;
 
@@ -20,7 +19,6 @@ public class EnemyFollow : MonoBehaviour
     {
         // Asigna el Animator y Rigidbody del objeto
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
 
         for (int i = 0; i < waypoints.Length; i++)
         {
