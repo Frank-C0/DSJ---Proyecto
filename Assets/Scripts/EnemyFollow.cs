@@ -5,135 +5,99 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     public float walkSpeed = 2f;
+    public Transform[] waypoints;
+    private int currentWaypointIndex = 0;
     public float runSpeed = 5f;
     public float detectionRange = 60f; // Distancia a la que el rayo detectará al jugador
-    public LayerMask detectionLayer;    // Capa para raycast, asignar al jugador y evitar obstáculos
     public float stopDistance = 0.5f;
     public Transform target;
-    public NavigationEnemy navigationEnemy;
-    
-    public Transform player;
     private Animator animator;
-    private Rigidbody rb;
-    private bool isFollowing = false;
-    private Vector3 wanderingDirection;
-
-    // text mesh pro for game over
     public TMPro.TextMeshProUGUI gameOverText;
+    public UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
         // Asigna el Animator y Rigidbody del objeto
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
 
-        // Generar una dirección inicial para deambular
-        wanderingDirection = Random.insideUnitSphere;
-        wanderingDirection.y = 0; // Para que solo deambule en el plano horizontal
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            Vector3 position = waypoints[i].position;
+            position.y = transform.position.y;    // Asigna el valor de 'y' fijo
+            waypoints[i].position = position; // Actualiza la posición del waypoint
+        }
     }
 
     void Update()
     {
         // Usamos un Raycast para detectar al jugador en frente del objeto
         DetectPlayerWithRaycast();
-
-        if (isFollowing)
-        {
-            FollowTarget();
-        }
-        else
-        {
-            Wandering();
-        }
     }
 
     // Detectar al jugador mediante Raycast
     void DetectPlayerWithRaycast()
     {
         RaycastHit hit;
-        //Vector3 rayDirection = transform.forward; // Rayo hacia adelante desde el objeto
-        Vector3 rayDirection =  (player.position - transform.position).normalized;
+        Vector3 rayDirection =  (target.position - transform.position).normalized;
 
         
         // Lanzar el raycast desde la posición del objeto hacia adelante
         if (Physics.Raycast(transform.position, rayDirection, out hit, detectionRange))
         {
             // Si el objeto detectado es el jugador
-            if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("Objeto detectado: " + hit.collider.name);
-                isFollowing = true;
-                navigationEnemy.isActive= false;
+            if (hit.collider.CompareTag("Player")){
                 animator.SetBool("isWalking", false);
-                animator.SetBool("isRunning", true);
+                animator.SetBool("isRunning", true);           
+                agent.speed= runSpeed;
+                agent.SetDestination(target.position);
+                this.transform.LookAt(target.position);
+            }
+            else
+            {
+                agent.speed= walkSpeed;
+                animator.SetBool("isWalking", true);
+                animator.SetBool("isRunning", false);
+                MoveTowardsWaypoint();
             }
         }
-        else
-        {
-            // Si no detecta al jugador, dejar de seguirlo
-            isFollowing = false;
-            navigationEnemy.isActive= true;
-        }
-    }
+    }  
 
-    // Método para seguir al jugador
-    void FollowTarget()
+    void MoveTowardsWaypoint()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (waypoints.Length == 0) return; // Si no hay waypoints, salir
 
-        if (distanceToPlayer > stopDistance)
+        agent.SetDestination(waypoints[currentWaypointIndex].position);
+        this.transform.LookAt(waypoints[currentWaypointIndex].position);
+        // Comprobar si ha llegado al waypoint
+        if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.8f)
         {
-            Vector3 directionToPlayer = (target.position - transform.position).normalized;
-            MoveTowards(directionToPlayer, 2*runSpeed);
+            float randomValue = Random.value; // Genera un valor aleatorio entre 0 y 1
+
+            if (randomValue < 0.7f) // 70% de probabilidad de continuar
+            {
+                // Mover al siguiente waypoint
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length; // Cíclico
+            }
+            else // 30% de probabilidad de volver al anterior
+            {
+                // Mover al waypoint anterior
+                currentWaypointIndex = (currentWaypointIndex - 1 + waypoints.Length) % waypoints.Length; // Cíclico
+            }
+            Debug.Log(currentWaypointIndex);
         }
-        else
-        {
-            // Detener el seguimiento si está demasiado cerca del jugador
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isAtacking", true);
-        }
-    }
-
-    // Movimiento de deambulación
-    void Wandering()
-    {
-        // Activar la animación de caminar mientras deambula
-        animator.SetBool("isWalking", true);
-        animator.SetBool("isRunning", false);
-
-        // Moverse en la dirección actual
-        MoveTowards(wanderingDirection, walkSpeed);
-    }
-
-    // Método para mover el objeto en una dirección con cierta velocidad
-    void MoveTowards(Vector3 direction, float speed)
-    {
-        Vector3 newPosition = rb.position + direction * speed * Time.deltaTime;
-        rb.MovePosition(newPosition);
-        this.transform.LookAt(target.position);
-
-        // Rotar para mirar en la dirección de movimiento
-        //Quaternion lookRotation = Quaternion.LookRotation(direction);
-        //rb.MoveRotation(Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f));
     }
 
     // Cambiar de dirección si colisiona con una pared u obstáculo
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            // Generar una nueva dirección aleatoria al chocar con algo
-            wanderingDirection = Random.insideUnitSphere;
-            wanderingDirection.y = 0;
-        }
-        else
+        if (collision.gameObject.CompareTag("Player"))
         {
             gameOverText.gameObject.SetActive(true);
             animator.SetBool("isAtacking", false);
             animator.SetBool("isWalking", true);
             Time.timeScale = 0; 
             Debug.Log("Juego Terminado");
+
         }
     }
 
