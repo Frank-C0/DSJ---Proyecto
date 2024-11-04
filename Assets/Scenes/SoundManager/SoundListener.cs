@@ -77,7 +77,7 @@ public class SoundListener : MonoBehaviour
     }
 
 
-    private void OnSoundHeard(SoundData soundData, float intensity)
+    virtual public void OnSoundHeard(SoundData soundData, float intensity)
     {
         Debug.Log($"Sonido detectado: {soundData.soundType} con intensidad: {intensity}");
     }
