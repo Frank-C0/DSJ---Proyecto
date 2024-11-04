@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Controlar la rotación en el eje X (mirar arriba/abajo).
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); 
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limitar la rotación para no girar de más.
         playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         // Revisar si el jugador está en el suelo.
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f; 
+            velocity.y = -2f; // Asegurar que el personaje no siga cayendo.
         }
 
         // Obtener el input de movimiento.
