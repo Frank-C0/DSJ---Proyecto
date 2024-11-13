@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAtToSound : SoundListener
+public class LookAtToSound : MonoBehaviour
 {
-    // override OnSoundHeard method
-    public override void OnSoundHeard(SoundData soundData, float intensity)
+
+    //on start. get the sound listener in the same object
+    private SoundListener soundListener;
+    private void Start()
     {
-        // call base method
-        base.OnSoundHeard(soundData, intensity);
+        soundListener = GetComponent<SoundListener>();
 
-        // get the direction from the sound to the listener
-        Vector3 direction = soundData.position - transform.position;
-
-        // look at the sound
-        transform.rotation = Quaternion.LookRotation(direction);
+        soundListener.SetHearingCallback(OnSoundHeard);
     }
+
+    //on sound heard, look at the sound
+    private void OnSoundHeard(SoundData soundData, float intensity)
+    {
+        Vector3 direction = soundData.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(direction);
+
+        // print sound data
+        Debug.Log($"Heard sound: {soundData.soundType} at {soundData.position} with intensity {intensity}");
+    }
+
 
 }

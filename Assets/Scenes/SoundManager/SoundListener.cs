@@ -16,6 +16,15 @@ public class SoundListener : MonoBehaviour
     private readonly Dictionary<string, float> lastHeardSounds = new Dictionary<string, float>();
     private const float SOUND_MEMORY_TIME = 1f;
 
+    // delegate to be called when a sound is heard
+    public delegate void SoundHeard(SoundData soundData, float intensity);
+    public event SoundHeard OnSoundHeard;
+
+    public void SetHearingCallback(SoundHeard callback)
+    {
+        OnSoundHeard = callback;
+    }
+
     private void OnEnable()
     {
         SoundManager.Instance.OnSoundEmitted += HandleSound;
@@ -77,10 +86,7 @@ public class SoundListener : MonoBehaviour
     }
 
 
-    virtual public void OnSoundHeard(SoundData soundData, float intensity)
-    {
-        Debug.Log($"Sonido detectado: {soundData.soundType} con intensidad: {intensity}");
-    }
+    
 
     private void OnDrawGizmos()
     {
