@@ -4,57 +4,60 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Transform playerCamera; // Cámara del jugador.
     [SerializeField] private Transform handPosition; // Posición para sostener el objeto.
     [SerializeField] private LineRenderer lineRenderer; // Línea para dibujar la trayectoria.
+
+    [Header("Trajectory Settings")]
     [SerializeField] private int trajectoryPoints = 30; // Cantidad de puntos en la trayectoria.
     [SerializeField] private float maxThrowForce = 20f; // Fuerza máxima de lanzamiento.
     [SerializeField] private float forceIncrement = 10f; // Incremento de fuerza por segundo.
     [SerializeField] private float timeBetweenPoints = 0.1f; // Tiempo entre puntos de la trayectoria.
 
     private GameObject heldObject = null; // Objeto actualmente sostenido.
-    private bool hasKey = false; // Indica si el jugador tiene una llave.
     private float currentThrowForce = 0f; // Fuerza actual cargada.
     private bool isCharging = false; // Si se está cargando la fuerza.
     private List<Vector3> trajectoryPositions = new List<Vector3>(); // Puntos de la trayectoria.
 
+    [Header("Key and Door System")]
+    public string correctDoorTag = "Door1"; // Tag de la puerta correcta.
+    private bool hasKey = false; // Indica si el jugador tiene una llave.
+
     void Update()
     {
-        HandleObjectInteraction();
-    }
-
-    private void HandleObjectInteraction()
-    {
-        if (Input.GetKeyDown(KeyCode.E)) // Recoger objeto con 'E'.
+        // Lógica de interacción
+        if (Input.GetKeyDown(KeyCode.E)) // Intentar recoger objetos con 'E'
         {
-            if (heldObject == null)
-            {
-                TryPickUpObject();
-            }
+            HandleObjectInteraction();
         }
 
+        // Lógica de lanzamiento
         if (heldObject != null)
         {
             HandleThrowing();
         }
     }
 
-    private void TryPickUpObject()
+    private void HandleObjectInteraction()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 3f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
         {
-            // Si es un objeto lanzable.
+            // Si es un objeto lanzable
             if (hit.collider.CompareTag("Throwable"))
             {
                 PickUpObject(hit.collider.gameObject);
             }
-            // Si es una llave.
+            // Si es una llave
             else if (hit.collider.CompareTag("Key"))
             {
                 CollectKey(hit.collider.gameObject);
+            }
+            // Si es una puerta
+            else if (hit.collider.CompareTag("Door1"))
+            {
+                TryOpenDoor(hit.collider.gameObject);
             }
         }
     }
@@ -63,35 +66,38 @@ public class PlayerInteraction : MonoBehaviour
     {
         heldObject = obj;
         Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null) rb.isKinematic = true;
 
-        if (rb != null)
-        {
-            rb.isKinematic = true; // Desactivar física.
-        }
-
-        obj.transform.SetParent(handPosition); // Vincular a la mano.
+        obj.transform.SetParent(handPosition);
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localRotation = Quaternion.identity;
     }
 
     private void CollectKey(GameObject keyObject)
     {
-        hasKey = true; // Actualizar el estado del jugador.
-        Destroy(keyObject); // Eliminar la llave del escenario.
-        Debug.Log("¡Llave recogida! Ahora puedes usarla.");
+        hasKey = true;
+        Destroy(keyObject);
+        Debug.Log("¡Llave recogida! Ahora puedes abrir puertas específicas.");
+    }
+
+    private void TryOpenDoor(GameObject doorObject)
+    {
+        Door door = doorObject.GetComponentInParent<Door>();
+        if (door != null)
+        {
+            door.TryOpenDoor(hasKey, correctDoorTag);
+        }
     }
 
     private void HandleThrowing()
     {
-        // Iniciar carga de fuerza.
-        if (Input.GetMouseButtonDown(1)) // Botón derecho.
+        if (Input.GetMouseButtonDown(1))
         {
             isCharging = true;
-            currentThrowForce = 0f; // Reiniciar la fuerza.
-            lineRenderer.enabled = true; // Mostrar la línea de trayectoria.
+            currentThrowForce = 0f;
+            lineRenderer.enabled = true;
         }
 
-        // Cargar fuerza y dibujar la trayectoria.
         if (Input.GetMouseButton(1) && isCharging)
         {
             currentThrowForce += forceIncrement * Time.deltaTime;
@@ -99,44 +105,36 @@ public class PlayerInteraction : MonoBehaviour
             ShowTrajectory();
         }
 
-        // Lanzar al soltar el botón derecho.
         if (Input.GetMouseButtonUp(1) && isCharging)
         {
             isCharging = false;
             LaunchHeldObject();
-            lineRenderer.positionCount = 0; // Limpiar la línea.
-            lineRenderer.enabled = false; // Ocultar la línea.
+            lineRenderer.positionCount = 0;
+            lineRenderer.enabled = false;
         }
     }
 
     private void ShowTrajectory()
     {
         trajectoryPositions.Clear();
-        Vector3 startPoint = handPosition.position; // Posición inicial del lanzamiento.
-        Vector3 startVelocity = playerCamera.forward * currentThrowForce; // Dirección y fuerza inicial.
+        Vector3 startPoint = handPosition.position;
+        Vector3 startVelocity = playerCamera.forward * currentThrowForce;
 
-        // Calcular los puntos de la trayectoria.
         for (int i = 0; i < trajectoryPoints; i++)
         {
             float time = i * timeBetweenPoints;
             Vector3 point = CalculatePositionAtTime(startPoint, startVelocity, time);
             trajectoryPositions.Add(point);
 
-            // Detener el cálculo si se predice una colisión con el suelo.
-            if (Physics.Raycast(point, Vector3.down, out RaycastHit hit, 0.1f))
-            {
-                break;
-            }
+            if (Physics.Raycast(point, Vector3.down, out RaycastHit hit, 0.1f)) break;
         }
 
-        // Actualizar el LineRenderer.
         lineRenderer.positionCount = trajectoryPositions.Count;
         lineRenderer.SetPositions(trajectoryPositions.ToArray());
     }
 
     private Vector3 CalculatePositionAtTime(Vector3 startPosition, Vector3 initialVelocity, float time)
     {
-        // Fórmula del movimiento parabólico.
         Vector3 gravity = Physics.gravity;
         return startPosition + initialVelocity * time + 0.5f * gravity * time * time;
     }
@@ -146,21 +144,20 @@ public class PlayerInteraction : MonoBehaviour
         if (heldObject != null)
         {
             Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-
             if (rb != null)
             {
-                rb.isKinematic = false; // Activar física.
-                rb.velocity = playerCamera.forward * currentThrowForce; // Aplicar la fuerza.
+                rb.isKinematic = false;
+                rb.velocity = playerCamera.forward * currentThrowForce;
             }
 
-            heldObject.transform.SetParent(null); // Soltar el objeto.
+            heldObject.transform.SetParent(null);
             heldObject = null;
-            currentThrowForce = 0f; // Reiniciar la fuerza.
+            currentThrowForce = 0f;
         }
     }
 
     public bool HasKey()
     {
-        return hasKey; // Permite consultar si el jugador tiene una llave.
+        return hasKey;
     }
 }
