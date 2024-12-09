@@ -18,7 +18,9 @@ public class Wander : MonoBehaviour
     {
         // Inicializar wander target
         timeSinceLastWander = wanderUpdateTime;
-        improvedWanderTarget = transform.position; // Inicializar en la posición actual
+
+        // Inicializar improvedWanderTarget en vector 0
+        improvedWanderTarget = Vector3.zero;
     }
 
     void Update()
@@ -31,9 +33,9 @@ public class Wander : MonoBehaviour
             if (timeSinceLastWander > wanderUpdateTime)
             {
                 timeSinceLastWander = 0f;
-                improvedWanderTarget = GetNewImprovedWanderTarget(); // Actualiza el objetivo
+                improvedWanderTarget =  GetNewImprovedWanderTarget(); // Actualiza el objetivo
             }
-            velocity += SeekTarget(improvedWanderTarget);
+            velocity += SeekTarget(transform.position + improvedWanderTarget);
         }
         else
         {
@@ -79,7 +81,7 @@ public class Wander : MonoBehaviour
     Vector3 GetNewImprovedWanderTarget()
     {
         // Proyecta un punto en el futuro según la velocidad actual
-        Vector3 futurePos = transform.position + new Vector3(velocity.x, 0, velocity.z).normalized * wanderRingDistance;
+        Vector3 futurePos = new Vector3(velocity.x, 0, velocity.z).normalized * wanderRingDistance;
 
         // Desplaza un objetivo dentro del círculo alrededor del punto futuro
         float randomAngle = Random.Range(0f, 360f);
@@ -101,7 +103,7 @@ public class Wander : MonoBehaviour
             Gizmos.DrawWireSphere(futurePos, wanderRingRadius);
 
             Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(futurePos, improvedWanderTarget); // Dibuja una línea hacia el objetivo actual
+            Gizmos.DrawLine(futurePos, transform.position + improvedWanderTarget); // Dibuja una línea hacia el objetivo actual
         }
         else
         {

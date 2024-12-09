@@ -12,7 +12,7 @@ public class Bottle : MonoBehaviour
         {
             Explode();
         }
-    }
+    } 
     
     void Explode()
     {

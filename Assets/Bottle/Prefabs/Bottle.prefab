@@ -402,9 +402,23 @@ MonoBehaviour:
   minDistance: 1
   maxDistance: 50
   audioClipData:
-  - clip: {fileID: 8300000, guid: d8ff9afc334aa40499e524834ff480a8, type: 3}
+  - clip: {fileID: 8300000, guid: 3e28fc6105bff124fb581a526e05eff8, type: 3}
     volume: 1
-  - clip: {fileID: 8300000, guid: 858e292e455fa9b43ac48a076dccb312, type: 3}
+  - clip: {fileID: 8300000, guid: b2188c11868dd1e4ca751b266bd3ab30, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 578ba5ba0f5329e4b9a1f25002560c8d, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: b10508df4c2ce3340bff0758efcce12e, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 75d12c33b23c6584f8122eb5268d338c, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: a17396bc9aec34a459e85b8db5e0ef96, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 5e4b8a0df4ec75c44bddeb85dab2415b, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 6c671b947a7fe0748af3eb84951c2067, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: ac9661401bce3a842b82479616e12100, type: 3}
     volume: 1
 --- !u!114 &85706283653595869
 MonoBehaviour:
