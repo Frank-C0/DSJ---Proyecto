@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 6594609402489657161}
   - component: {fileID: 5674856519091410976}
   - component: {fileID: 480736913840150190}
-  - component: {fileID: 6108448316087423489}
   - component: {fileID: 8112709198708220882}
+  - component: {fileID: 6264384569141818734}
+  - component: {fileID: 4301979981335850237}
+  - component: {fileID: 2313739896672880325}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -163,25 +165,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &6108448316087423489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2561529136275662579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 216f33e0abfb2da4e9e1da42a245a315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 6464898658139063620}
-  handPosition: {fileID: 587628180412667717}
-  lineRenderer: {fileID: 8112709198708220882}
-  trajectoryPoints: 30
-  maxThrowForce: 20
-  forceIncrement: 10
-  timeBetweenPoints: 0.1
 --- !u!120 &8112709198708220882
 LineRenderer:
   serializedVersion: 2
@@ -286,6 +269,53 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6264384569141818734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561529136275662579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68ebfd1525fa0542b32c7ad820e17bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasKey: 0
+--- !u!114 &4301979981335850237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561529136275662579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af840439a9ea6894d85ae8a06607f137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 6464898658139063620}
+  rayDistance: 3
+  interactionText: {fileID: 0}
+--- !u!114 &2313739896672880325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561529136275662579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b630183d89961484db3cfd4fd5930089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handPosition: {fileID: 587628180412667717}
+  playerCamera: {fileID: 6464898658139063620}
+  lineRenderer: {fileID: 8112709198708220882}
+  trajectoryPoints: 30
+  maxThrowForce: 20
+  forceIncrement: 10
+  timeBetweenPoints: 0.1
 --- !u!1 &5736055747773333525
 GameObject:
   m_ObjectHideFlags: 0

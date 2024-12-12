@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SoundOnCollision : MonoBehaviour
 {
+    [SerializeField]
     private SoundEmitter soundEmitter;
     [SerializeField]
     public float minVelocitySound = 1f;
+
 
     // initialization
     private void Start()
     {
         // Get the SoundEmitter component
-        soundEmitter = GetComponent<SoundEmitter>();
     }
 
     // collision detection. if velocity is greater than 0.5, emit sound

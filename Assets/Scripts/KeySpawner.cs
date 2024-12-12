@@ -30,13 +30,13 @@ public class KeySpawner : MonoBehaviour
 
 
     // make a gizmo to see the spawn points
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
 
-        foreach (Transform spawnPoint in keySpawnPoints)
-        {
-            Gizmos.DrawSphere(spawnPoint.position, 0.5f);
-        }
-    }
+    //    foreach (Transform spawnPoint in keySpawnPoints)
+    //    {
+    //        Gizmos.DrawSphere(spawnPoint.position, 0.5f);
+    //    }
+    //}
 }

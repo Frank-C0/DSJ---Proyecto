@@ -64,13 +64,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private void PickUpObject(GameObject obj)
     {
-        heldObject = obj;
-        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        heldObject = obj.transform.parent.gameObject;
+        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         if (rb != null) rb.isKinematic = true;
 
-        obj.transform.SetParent(handPosition);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.identity;
+        heldObject.transform.SetParent(handPosition);
+        heldObject.transform.localPosition = Vector3.zero;
+        heldObject.transform.localRotation = Quaternion.identity;
     }
 
     private void CollectKey(GameObject keyObject)

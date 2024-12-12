@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class Bottle : MonoBehaviour
 {
-    [SerializeField] GameObject brokenBottlePrefab;
-    
-    void Update() // just for testing
+    [SerializeField] GameObject visibleBottle; // Referencia al objeto visible intacto
+    [SerializeField] GameObject brokenBottle;  // Referencia al objeto roto (ya en la jerarquía)
+    [SerializeField] SoundEmitter soundEmitter; // Referencia al emisor de sonido
+
+    void Start()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        // Asegurarse de que la botella rota esté desactivada al inicio
+        if (brokenBottle != null)
+        {
+            brokenBottle.SetActive(false);
+        }
+    }
+
+    void Explode()
+    {
+        if (brokenBottle != null && visibleBottle != null)
+        {
+            soundEmitter.EmitSound();
+            // Desactivar la botella intacta y activar la rota
+            visibleBottle.SetActive(false);
+            brokenBottle.SetActive(true);
+
+            // Opcional: aplicar fuerzas a los fragmentos si es necesario
+            brokenBottle.GetComponent<BrokenBottle>()?.RandomVelocities();
+        }
+    }
+
+    // Explota al colisionar con suficiente velocidad
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.relativeVelocity.magnitude > 20)
         {
             Explode();
         }
-    } 
-    
-    void Explode()
-    {
-        GameObject brokenBottle = Instantiate(brokenBottlePrefab, this.transform.position, Quaternion.identity);
-        brokenBottle.GetComponent<BrokenBottle>().RandomVelocities();
-        Destroy(gameObject);
     }
 }

@@ -149,16 +149,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
-  runSpeed: 4
+  waypoints: []
+  runSpeed: 6
   detectionRange: 50
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 0
   stopDistance: 0.5
   target: {fileID: 0}
-  navigationEnemy: {fileID: 0}
-  player: {fileID: 0}
   gameOverText: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!54 &4096480501547317069
 Rigidbody:
   m_ObjectHideFlags: 0
