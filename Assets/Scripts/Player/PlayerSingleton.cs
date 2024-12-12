@@ -9,6 +9,10 @@ public class PlayerSingleton : MonoBehaviour
     public PlayerInventory playerInventory;
     public ObjectThrowing playerObjectThrowing;
 
+    [Header("Enemy Data")]
+    public GameObject enemy;
+    public EnemyController enemyController;
+
     void Awake()
     {
         // Implementación del Singleton

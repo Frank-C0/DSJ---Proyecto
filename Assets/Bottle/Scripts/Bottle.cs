@@ -29,12 +29,17 @@ public class Bottle : MonoBehaviour
             // Opcional: aplicar fuerzas a los fragmentos si es necesario
             brokenBottle.GetComponent<BrokenBottle>()?.RandomVelocities();
         }
+        else
+        {
+            Debug.LogWarning("No se han asignado las referencias de la botella");
+        }
     }
 
     // Explota al colisionar con suficiente velocidad
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 20)
+        Debug.Log("Collision with " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
+        if (collision.relativeVelocity.magnitude > 10)
         {
             Explode();
         }

@@ -497,7 +497,7 @@ PrefabInstance:
     - target: {fileID: 4797474907516175714, guid: 344f2b6ade7a1c94f841578f818617ee,
         type: 3}
       propertyPath: timeBeforeDestroying
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9127186685924032220, guid: 344f2b6ade7a1c94f841578f818617ee,
         type: 3}
@@ -553,6 +553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BrokenBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127186685924032221, guid: 344f2b6ade7a1c94f841578f818617ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
