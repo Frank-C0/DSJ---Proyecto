@@ -15,6 +15,8 @@ public class AttackState : IEnemyState
         controller.Animator.SetBool("isWalking", false);
         controller.Animator.SetBool("isRunning", false);
         controller.Animator.SetBool("isAtacking", true);
+
+        Debug.Log("Atacando");
     }
 
     public void UpdateState()

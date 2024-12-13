@@ -99,7 +99,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7009942372728805702}
+      addedObject: {fileID: 3511621329369648466}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
         type: 3}
       insertIndex: -1
@@ -107,7 +107,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2373913688232390484}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5146111889128273789}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7824348779825644255}
   m_SourcePrefab: {fileID: 100100000, guid: e6b070634da492a48a576974248d64b9, type: 3}
 --- !u!1 &8914286996971816111 stripped
 GameObject:
@@ -136,7 +144,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7009942372728805702
+--- !u!114 &3511621329369648466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,17 +153,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8914286996971816111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 910fbfc28c743194abd32a954058a066, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ae3db8cd37a56b43a33213ce00b3ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  waypoints: []
-  runSpeed: 6
-  detectionRange: 50
-  stopDistance: 0.5
-  target: {fileID: 0}
-  gameOverText: {fileID: 0}
-  agent: {fileID: 0}
+  WalkSpeed: 2
+  RunSpeed: 5
+  Waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  StopDistance: 1
+  LoseSightTime: 5
+  Target: {fileID: 0}
+  Agent: {fileID: 0}
+  Animator: {fileID: 3533354461774365811}
+  Vision: {fileID: 0}
 --- !u!54 &4096480501547317069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,6 +197,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2373913688232390484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914286996971816111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0693b38346f66942b84a290bf6534a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyes: {fileID: 0}
+  detectionRange: 10
+  fieldOfViewAngle: 30
 --- !u!136 &5146111889128273789
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -206,3 +235,20 @@ CapsuleCollider:
   m_Height: 7.5
   m_Direction: 2
   m_Center: {x: 0, y: 2, z: 1.5}
+--- !u!114 &7824348779825644255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914286996971816111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d228b95f6e94748b7458beefcc55c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingRange: 1
+  maxHearingDistance: 26
+  hearingLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295

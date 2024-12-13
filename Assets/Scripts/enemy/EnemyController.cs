@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
 
         patrolState = new PatrolState(this);
         chaseState = new ChaseState(this);
+        attackState = new AttackState(this);
 
 
         SwitchState(patrolState);
@@ -47,7 +48,7 @@ public class EnemyController : MonoBehaviour
             timeSinceLastSeen = 0f;
             SwitchState(chaseState);
         }
-        else if (Vector3.Distance(Target.position, transform.position) < 1.5f)
+        else if (Vector3.Distance(Target.position, transform.position) < 2.0f)
         {
             SwitchState(attackState);
         }
@@ -70,5 +71,14 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    // on collision set to attack
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            SwitchState(attackState);
+        }
+    }
 
 }

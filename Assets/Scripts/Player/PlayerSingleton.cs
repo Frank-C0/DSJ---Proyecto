@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerSingleton : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class PlayerSingleton : MonoBehaviour
     [Header("Enemy Data")]
     public GameObject enemy;
     public EnemyController enemyController;
+
+    [Header("Textos")]
+    public TextMeshProUGUI winText;
+    public TextMeshProUGUI gameOverText;
 
     void Awake()
     {

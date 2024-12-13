@@ -377,6 +377,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 61420655264581901}
     m_Modifications:
+    - target: {fileID: 3511621329369648466, guid: 877dc861ccb8af54a82af8e7768fd13c,
+        type: 3}
+      propertyPath: Agent
+      value: 
+      objectReference: {fileID: 2043785468080441856}
+    - target: {fileID: 3511621329369648466, guid: 877dc861ccb8af54a82af8e7768fd13c,
+        type: 3}
+      propertyPath: Waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 8152530812412209348}
+    - target: {fileID: 3511621329369648466, guid: 877dc861ccb8af54a82af8e7768fd13c,
+        type: 3}
+      propertyPath: Waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 6528095929640480950}
+    - target: {fileID: 3511621329369648466, guid: 877dc861ccb8af54a82af8e7768fd13c,
+        type: 3}
+      propertyPath: Waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1441276134471193204}
+    - target: {fileID: 3511621329369648466, guid: 877dc861ccb8af54a82af8e7768fd13c,
+        type: 3}
+      propertyPath: Waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 2218050320210332764}
+    - target: {fileID: 3511621329369648466, guid: 877dc861ccb8af54a82af8e7768fd13c,
+        type: 3}
+      propertyPath: Waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 6412223934004742686}
     - target: {fileID: 3615335832229484549, guid: 877dc861ccb8af54a82af8e7768fd13c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

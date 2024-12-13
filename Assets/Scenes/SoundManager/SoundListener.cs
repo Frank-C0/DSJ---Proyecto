@@ -18,7 +18,7 @@ public class SoundListener : MonoBehaviour
 
     // delegate to be called when a sound is heard
     public delegate void SoundHeard(SoundData soundData, float intensity);
-    public event SoundHeard OnSoundHeard;
+    public event SoundHeard OnSoundHeard;   
 
     public void SetHearingCallback(SoundHeard callback)
     {
@@ -79,7 +79,9 @@ public class SoundListener : MonoBehaviour
                     Time.time - lastHeardSounds[soundData.soundType] > SOUND_MEMORY_TIME)
                 {
                     lastHeardSounds[soundData.soundType] = Time.time;
-                    OnSoundHeard(soundData, intensity);
+
+                    if (OnSoundHeard != null)
+                        OnSoundHeard(soundData, intensity);
                 }
             }
         }
