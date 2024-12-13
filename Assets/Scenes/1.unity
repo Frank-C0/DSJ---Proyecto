@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.32062122, g: 0.39581186, b: 0.5188679, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.08
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c534c4e66fc1a1d4cbeacb07f51aa048, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18381311, g: 0.2284587, b: 0.30023673, a: 1}
+  m_IndirectSpecularColor: {r: 0.13854994, g: 0.17907678, b: 0.26171917, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -586,8 +586,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1601,7 +1601,7 @@ PrefabInstance:
     - target: {fileID: 1265760817493160285, guid: cd178191d273c394ea6973b5788c1451,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1265760817493160285, guid: cd178191d273c394ea6973b5788c1451,
         type: 3}
@@ -1637,11 +1637,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2313739896672880325, guid: cd178191d273c394ea6973b5788c1451,
-        type: 3}
-      propertyPath: forceIncrement
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2561529136275662579, guid: cd178191d273c394ea6973b5788c1451,
         type: 3}
@@ -2017,7 +2012,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.11311853, g: 0.24856807, b: 0.5849056, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.95
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3079,6 +3074,11 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1757116172}
+    - target: {fileID: 5048483651764388515, guid: 7b2318b94fa2c9f4caccafcbdee65c40,
+        type: 3}
+      propertyPath: Vision
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5048483651764388515, guid: 7b2318b94fa2c9f4caccafcbdee65c40,
         type: 3}
       propertyPath: Waypoints.Array.data[0]

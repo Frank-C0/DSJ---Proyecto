@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5048483651764388515}
   - component: {fileID: 5723277224536905348}
   - component: {fileID: 5126590151054659913}
+  - component: {fileID: 5694557604200757602}
   m_Layer: 0
   m_Name: Enemigo1 1
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   Agent: {fileID: 0}
   Animator: {fileID: 5215409392421379712}
-  Vision: {fileID: 6456457555326416295}
+  Vision: {fileID: 0}
 --- !u!114 &5723277224536905348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,21 @@ CapsuleCollider:
   m_Height: 3.94
   m_Direction: 2
   m_Center: {x: 0.04, y: 1.16, z: -0.86}
+--- !u!114 &5694557604200757602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298779614054858163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0693b38346f66942b84a290bf6534a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyes: {fileID: 8478709374418850442}
+  detectionRange: 10
+  fieldOfViewAngle: 30
 --- !u!1001 &8748281980289374963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,15 +269,9 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 8748281980289374963}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6456457555326416295 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2373913688232390484, guid: 877dc861ccb8af54a82af8e7768fd13c,
+--- !u!4 &8478709374418850442 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 919377939162450041, guid: 877dc861ccb8af54a82af8e7768fd13c,
     type: 3}
   m_PrefabInstance: {fileID: 8748281980289374963}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0693b38346f66942b84a290bf6534a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
