@@ -77,11 +77,24 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    // on collision set to attack
-    private void OnCollisionEnter(Collision collision)
+    //// on collision set to attack
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log("Enemy Collision " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        Debug.Log("Game Over");
+    //        PlayerSingleton.Instance.gameOverText.text = "Game Over";
+    //        PlayerSingleton.Instance.gameOverText.gameObject.SetActive(true);
+    //        isAttacking = true;
+    //    }
+    //}
+
+    // on trigger set attacking and game over
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enemy Collision " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log("Enemy Trigger " + other.gameObject.name);
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Game Over");
             PlayerSingleton.Instance.gameOverText.text = "Game Over";
