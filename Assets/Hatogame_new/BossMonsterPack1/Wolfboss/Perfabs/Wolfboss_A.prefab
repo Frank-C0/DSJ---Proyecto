@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8613121480027185198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 919377939162450041}
+  m_Layer: 0
+  m_Name: eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &919377939162450041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613121480027185198}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.131436, y: 2.1000001, z: 5.0631514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8142007194097016341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8607646740179237374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90,7 +121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6b070634da492a48a576974248d64b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 919377939162450041}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
         type: 3}
@@ -117,6 +152,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7824348779825644255}
   m_SourcePrefab: {fileID: 100100000, guid: e6b070634da492a48a576974248d64b9, type: 3}
+--- !u!4 &8142007194097016341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6b070634da492a48a576974248d64b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8607646740179237374}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8914286996971816111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e6b070634da492a48a576974248d64b9,
@@ -169,7 +210,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   Agent: {fileID: 0}
   Animator: {fileID: 3533354461774365811}
-  Vision: {fileID: 0}
+  Vision: {fileID: 2373913688232390484}
 --- !u!54 &4096480501547317069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0693b38346f66942b84a290bf6534a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyes: {fileID: 0}
+  eyes: {fileID: 919377939162450041}
   detectionRange: 10
   fieldOfViewAngle: 30
 --- !u!136 &5146111889128273789
@@ -234,7 +275,7 @@ CapsuleCollider:
   m_Radius: 2
   m_Height: 7.5
   m_Direction: 2
-  m_Center: {x: 0, y: 2, z: 1.5}
+  m_Center: {x: 1.06, y: 2, z: 1.5}
 --- !u!114 &7824348779825644255
 MonoBehaviour:
   m_ObjectHideFlags: 0

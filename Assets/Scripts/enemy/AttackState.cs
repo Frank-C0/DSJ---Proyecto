@@ -16,14 +16,16 @@ public class AttackState : IEnemyState
         controller.Animator.SetBool("isRunning", false);
         controller.Animator.SetBool("isAtacking", true);
 
-        Debug.Log("Atacando");
     }
 
     public void UpdateState()
     {
         if (controller.Target != null)
         {
-            controller.Agent.SetDestination(controller.Target.position);
+            //controller.Agent.SetDestination(controller.Target.position);
+
+            // set no destination
+            controller.Agent.SetDestination(controller.transform.position);
         }
     }
 }

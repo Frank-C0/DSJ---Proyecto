@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
 
     private float timeSinceLastSeen;
 
+    private bool isAttacking = false;
+
     void Start()
     {
         if (Agent == null) Agent = GetComponent<NavMeshAgent>();
@@ -43,7 +45,11 @@ public class EnemyController : MonoBehaviour
     {
         currentState.UpdateState();
 
-        if (Vision.IsPlayerInSight(Target))
+        if (isAttacking)
+        {
+            SwitchState(attackState);
+        }
+        else if (Vision.IsPlayerInSight(Target))
         {
             timeSinceLastSeen = 0f;
             SwitchState(chaseState);
@@ -74,10 +80,13 @@ public class EnemyController : MonoBehaviour
     // on collision set to attack
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
+        Debug.Log("Enemy Collision " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
         if (collision.gameObject.CompareTag("Player"))
         {
-            SwitchState(attackState);
+            Debug.Log("Game Over");
+            PlayerSingleton.Instance.gameOverText.text = "Game Over";
+            PlayerSingleton.Instance.gameOverText.gameObject.SetActive(true);
+            isAttacking = true;
         }
     }
 
