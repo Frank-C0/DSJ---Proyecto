@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,14 +17,16 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent Agent;
     public Animator Animator;
     public EnemyVision Vision;
+    public SoundListener soundListener;
 
     private IEnemyState currentState;
-    private PatrolState patrolState;
-    private ChaseState chaseState;
-    private AttackState attackState;
+    public PatrolState patrolState;
+    public ChaseState chaseState;
+    public AttackState attackState;
+    public SoundInvestigationState soundInvestigationState;
 
+    public Vector3 lastKnownPlayerPosition;
     private float timeSinceLastSeen;
-
     private bool isAttacking = false;
 
     void Start()
@@ -36,9 +38,10 @@ public class EnemyController : MonoBehaviour
         patrolState = new PatrolState(this);
         chaseState = new ChaseState(this);
         attackState = new AttackState(this);
-
+        soundInvestigationState = new SoundInvestigationState(this);
 
         SwitchState(patrolState);
+        soundListener.SetHearingCallback(OnListenSound);
     }
 
     void Update()
@@ -51,23 +54,41 @@ public class EnemyController : MonoBehaviour
         }
         else if (Vision.IsPlayerInSight(Target))
         {
+            lastKnownPlayerPosition = Target.position;
             timeSinceLastSeen = 0f;
             SwitchState(chaseState);
-        }
-        else if (Vector3.Distance(Target.position, transform.position) < 2.0f)
-        {
-            SwitchState(attackState);
         }
         else if (currentState == chaseState)
         {
             timeSinceLastSeen += Time.deltaTime;
-
             if (timeSinceLastSeen >= LoseSightTime)
             {
                 SwitchState(patrolState);
             }
         }
+    }
 
+    public void OnListenSound(SoundData soundData, float intensity)
+    {
+        if (intensity > 0.6f && !soundData.soundType.StartsWith("enemy"))
+        {
+            Debug.Log("Heard sound: " + soundData.soundType + " at " + soundData.position + " with intensity " + intensity);
+
+            if (currentState == soundInvestigationState && soundInvestigationState.investigationTimer > 0f)
+            {
+                Debug.Log("Already investigating sound");
+                return;
+            }
+
+            if (currentState == chaseState && soundData.soundType.StartsWith("player"))
+            {
+                Debug.Log("Heard player sound while chasing");
+                return;
+            }
+
+            soundInvestigationState.SetSoundPosition(soundData.position);
+            SwitchState(soundInvestigationState);
+        }
     }
 
     public void SwitchState(IEnemyState newState)
@@ -76,19 +97,15 @@ public class EnemyController : MonoBehaviour
         currentState.EnterState();
     }
 
+    public void PauseAnimations()
+    {
+        Animator.speed = 0;
+    }
 
-    //// on collision set to attack
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("Enemy Collision " + collision.gameObject.name + " at " + collision.relativeVelocity.magnitude);
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        Debug.Log("Game Over");
-    //        PlayerSingleton.Instance.gameOverText.text = "Game Over";
-    //        PlayerSingleton.Instance.gameOverText.gameObject.SetActive(true);
-    //        isAttacking = true;
-    //    }
-    //}
+    public void ResumeAnimations()
+    {
+        Animator.speed = 1;
+    }
 
     // on trigger set attacking and game over
     private void OnTriggerEnter(Collider other)
@@ -97,9 +114,8 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Game Over");
-            PlayerSingleton.Instance.controladorCanvas.TerminarJuego();
+            PlayerSingleton.Instance.GameOver();
             isAttacking = true;
         }
     }
-
 }

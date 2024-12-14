@@ -388,6 +388,7 @@ MonoBehaviour:
   duration: 0
   frequency: 1
   soundType: glass
+  is3D: 1
   minDistance: 1
   maxDistance: 50
   audioClipData:
@@ -442,6 +443,7 @@ MonoBehaviour:
   duration: 0
   frequency: 1
   soundType: glass
+  is3D: 1
   minDistance: 1
   maxDistance: 50
   audioClipData:

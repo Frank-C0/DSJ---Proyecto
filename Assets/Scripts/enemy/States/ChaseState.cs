@@ -12,15 +12,19 @@ public class ChaseState : IEnemyState
     public void EnterState()
     {
         controller.Agent.speed = controller.RunSpeed;
-        controller.Animator.SetBool("isWalking", false);
         controller.Animator.SetBool("isRunning", true);
+        controller.Animator.SetBool("isWalking", false);
     }
 
     public void UpdateState()
     {
-        if (controller.Target != null)
+        if (controller.Vision.IsPlayerInSight(controller.Target))
         {
             controller.Agent.SetDestination(controller.Target.position);
+        }
+        else
+        {
+            controller.Agent.SetDestination(controller.lastKnownPlayerPosition);
         }
     }
 }

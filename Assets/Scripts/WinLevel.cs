@@ -8,7 +8,7 @@ public class WinLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerSingleton.Instance.controladorCanvas.GanarJuego();
+            PlayerSingleton.Instance.WinGame();
             Debug.Log("You win!");
         }
     }

@@ -33,6 +33,7 @@ public class RaycastInteraction : MonoBehaviour
             currentInteractable = hit.collider.GetComponent<IInteractable>();
             if (currentInteractable != null)
             {
+                Debug.Log("Interactable object found " + currentInteractable.GetInteractionMessage());
                 interactionText.text = currentInteractable.GetInteractionMessage();
 
                 if (Input.GetKeyDown(KeyCode.E))

@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 6264384569141818734}
   - component: {fileID: 4301979981335850237}
   - component: {fileID: 2313739896672880325}
+  - component: {fileID: 8936977093829046146}
+  - component: {fileID: 8732309442880141162}
+  - component: {fileID: 7191354992622921479}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -316,6 +319,77 @@ MonoBehaviour:
   maxThrowForce: 20
   forceIncrement: 10
   timeBetweenPoints: 0.1
+--- !u!114 &8936977093829046146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561529136275662579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6265d0423d3cbe34dbbc441bda0d7342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  baseVolume: 0.8
+  duration: 0
+  frequency: 1
+  soundType: default
+  is3D: 0
+  minDistance: 1
+  maxDistance: 40
+  audioClipData: []
+--- !u!114 &8732309442880141162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561529136275662579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983b531a4bfae7843811be5e51d25e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceThreshold: 2
+  soundEmitter: {fileID: 8936977093829046146}
+  soundClips:
+  - clip: {fileID: 8300000, guid: 563f48eb1cbb3544390452d4c8dbd9e7, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 99d9681048721b448a475b3e5689a32b, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 0888eae6841793d4ca1a486d9003df43, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 6670685c038b8244a9715f33466781df, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 97c33863b9514db499a562ce12b002f0, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 0d829e09ba4e32544b2dfaac3603787c, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 1687f052358f44b46baf4191a349ede3, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 9581aac2f8db91e419f9d4906409a8b3, type: 3}
+    volume: 1
+--- !u!114 &7191354992622921479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561529136275662579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d228b95f6e94748b7458beefcc55c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingRange: 2
+  maxHearingDistance: 5
+  hearingLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5736055747773333525
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +415,7 @@ Transform:
   m_GameObject: {fileID: 5736055747773333525}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.63, y: 0.66, z: -0.01}
+  m_LocalPosition: {x: 0.8, y: 0.66, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -359,6 +433,7 @@ GameObject:
   - component: {fileID: 1689824968421435250}
   - component: {fileID: 7598099226314001394}
   - component: {fileID: 7265622950701376907}
+  - component: {fileID: 3423142047618351283}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -484,3 +559,37 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &3423142047618351283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915689425672869991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1919907ae5dbc4689742a738af2e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClipDatas:
+  - clip: {fileID: 8300000, guid: e97b4926f4f3bb84fab6498a8efa0446, type: 3}
+    volume: 0.22
+  - clip: {fileID: 8300000, guid: f56f5c12c667562488ce5727d3dd1451, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: 2a5e204ca456e4044aa4de0e2fdd511d, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: 96135ba6db844c6459711bf7ce7db4d0, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: 26bbd4838f1f3f743aef8ee7877321e0, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: 29c9ec313711a5a4580bd6721302cc4d, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: 2a269ae8446e21840965aa965ba6ba30, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: 0a9568cf873287c4a8965937fe472587, type: 3}
+    volume: 0.2
+  minDelay: 3.2
+  maxDelay: 6.4
+  minDistance: 5
+  maxDistance: 50
+  is3D: 0

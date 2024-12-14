@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5723277224536905348}
   - component: {fileID: 5126590151054659913}
   - component: {fileID: 5694557604200757602}
+  - component: {fileID: 3804361596999827643}
+  - component: {fileID: 5092820507394719689}
   m_Layer: 0
   m_Name: Enemigo1 1
   m_TagString: Untagged
@@ -79,12 +81,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  StopDistance: 1
+  StopDistance: 1.5
   LoseSightTime: 5
   Target: {fileID: 0}
   Agent: {fileID: 0}
   Animator: {fileID: 5215409392421379712}
-  Vision: {fileID: 0}
+  Vision: {fileID: 5694557604200757602}
+  soundListener: {fileID: 5723277224536905348}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5723277224536905348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +142,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyes: {fileID: 8478709374418850442}
-  detectionRange: 10
+  detectionRange: 10.7
   fieldOfViewAngle: 30
+--- !u!114 &3804361596999827643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298779614054858163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6265d0423d3cbe34dbbc441bda0d7342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  baseVolume: 1
+  duration: 2
+  frequency: 1
+  soundType: enemy_footstep
+  is3D: 1
+  minDistance: 1
+  maxDistance: 30
+  audioClipData:
+  - clip: {fileID: 8300000, guid: bf4e3daa849bd644c9abbca7cbcd3882, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: a64e606c3d29dfe4194154d0090bae77, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 3a61dcdf1d8aa6449be861bede204c83, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 2e4c198dc818e304dbc0f2484a7f46a3, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 1e07b416af05749458bf9f84929ebc7d, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 7a553fb4d117fa84096b019905e002f9, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: efdaa2ef6878d5b40a6c0f844ad1ec0a, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: f9258d65febcdf44fa1d074b7ed321a4, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 72b97705e93a90b40be053503c668bb9, type: 3}
+    volume: 1
+--- !u!114 &5092820507394719689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298779614054858163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1919907ae5dbc4689742a738af2e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClipDatas:
+  - clip: {fileID: 8300000, guid: 7edc4f159fb27af4d80fa564bd935e84, type: 3}
+    volume: 2
+  - clip: {fileID: 8300000, guid: 6dc40d50380467745bf26aa446f75827, type: 3}
+    volume: 2
+  - clip: {fileID: 8300000, guid: 6c978b28f61d46642b62a3879d4d9e7b, type: 3}
+    volume: 2
+  - clip: {fileID: 8300000, guid: 03277f4b0a7e333489b5520b44158a7f, type: 3}
+    volume: 2
+  - clip: {fileID: 8300000, guid: 70a844d5e5622ff4db0724e420fde91f, type: 3}
+    volume: 2
+  - clip: {fileID: 8300000, guid: aa54dc0bb34206d429f65fb0fea5f3e5, type: 3}
+    volume: 2
+  - clip: {fileID: 8300000, guid: 52f174c0c01f53f43884f8a0f5d228b4, type: 3}
+    volume: 2
+  minDelay: 0.3
+  maxDelay: 1.8
+  minDistance: 5
+  maxDistance: 50
+  is3D: 1
 --- !u!1001 &8748281980289374963
 PrefabInstance:
   m_ObjectHideFlags: 0

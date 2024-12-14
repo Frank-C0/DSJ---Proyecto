@@ -11,8 +11,9 @@ public class SoundEmitter : MonoBehaviour
 
     [Header("Audio settings")]
     [SerializeField] private string soundType = "default";
-    [SerializeField] public float minDistance;          // Distancia mínima de audición
-    [SerializeField] public float maxDistance;          // Distancia máxima de audición
+    [SerializeField] public bool is3D = true;
+    [SerializeField] public float minDistance = 1;          // Distancia mínima de audición
+    [SerializeField] public float maxDistance = 40;          // Distancia máxima de audición
     [SerializeField] private AudioClipData[] audioClipData;
     public void EmitSound()
     {

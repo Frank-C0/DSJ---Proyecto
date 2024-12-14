@@ -28,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (PlayerSingleton.isPaused || PlayerSingleton.isGameOver)
+        {
+            return;
+        }
+
         // Movimiento de la cámara con el ratón.
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

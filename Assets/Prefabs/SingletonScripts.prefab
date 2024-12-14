@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770c818dedd105b4f97b408624352bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolSize: 10
+  poolSize: 20
 --- !u!114 &5590178111835297931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,3 +74,9 @@ MonoBehaviour:
   player: {fileID: 0}
   playerInventory: {fileID: 0}
   playerObjectThrowing: {fileID: 0}
+  enemy: {fileID: 0}
+  enemyController: {fileID: 0}
+  controladorCanvas: {fileID: 0}
+  pantallaPausa: {fileID: 0}
+  pantallaPerdiste: {fileID: 0}
+  pantallaGanaste: {fileID: 0}
