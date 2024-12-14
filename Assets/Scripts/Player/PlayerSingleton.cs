@@ -15,12 +15,11 @@ public class PlayerSingleton : MonoBehaviour
     public EnemyController enemyController;
 
     [Header("Textos")]
-    public TextMeshProUGUI winText;
-    public TextMeshProUGUI gameOverText;
+    public ControladorCanvas controladorCanvas;
 
     void Awake()
     {
-        // Implementación del Singleton
+        // Implementaciï¿½n del Singleton
         if (Instance == null)
         {
             Instance = this;

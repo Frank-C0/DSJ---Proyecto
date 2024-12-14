@@ -2969,6 +2969,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &689477039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1265760817493160285, guid: cd178191d273c394ea6973b5788c1451,
+    type: 3}
+  m_PrefabInstance: {fileID: 1194603808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &689720804
 GameObject:
   m_ObjectHideFlags: 0
@@ -9899,6 +9905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo1
       objectReference: {fileID: 0}
+    - target: {fileID: 8460923379934152478, guid: fad42f8c22f0e3143a54e47f142eae24,
+        type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 689477039}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

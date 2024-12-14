@@ -8,9 +8,7 @@ public class WinLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerSingleton.Instance.winText.text = "You win!";
-            PlayerSingleton.Instance.winText.gameObject.SetActive(true);
-
+            PlayerSingleton.Instance.controladorCanvas.GanarJuego();
             Debug.Log("You win!");
         }
     }

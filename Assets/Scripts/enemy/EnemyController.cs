@@ -97,8 +97,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Game Over");
-            PlayerSingleton.Instance.gameOverText.text = "Game Over";
-            PlayerSingleton.Instance.gameOverText.gameObject.SetActive(true);
+            PlayerSingleton.Instance.controladorCanvas.TerminarJuego();
             isAttacking = true;
         }
     }
