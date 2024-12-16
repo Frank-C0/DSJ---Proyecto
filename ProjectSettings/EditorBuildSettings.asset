@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/game/Menu.unity
     guid: e36d2e9caad297543bf75382b9baf286
   - enabled: 1
-    path: Assets/Scenes/game/1.unity
-    guid: 481b743dc59d4f2449e7b38c2aaa74a7
-  - enabled: 1
-    path: Assets/Scenes/game/2.unity
-    guid: 4b6e84d305a99a5488d96b0411643e21
-  - enabled: 1
-    path: Assets/Scenes/game/3.unity
+    path: Assets/Scenes/game/Nivel3.unity
     guid: 137b219538761d74f9d47bcf0d82ec88
+  - enabled: 1
+    path: Assets/Scenes/game/Nivel2.unity
+    guid: 5302ec47dd872eb4a9bc62a21dafc001
+  - enabled: 1
+    path: Assets/Scenes/game/Nivel 1-San Camilo.unity
+    guid: 035821248a1cf8c4dad75ed0489aa6ce
   m_configObjects: {}

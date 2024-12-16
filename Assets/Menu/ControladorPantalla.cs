@@ -50,12 +50,12 @@ public class ControladorPantalla : MonoBehaviour
     }
 
     public void SeleccionarNivel(int nivel){
-        if(nivel <= this.nivel){
+        //if(nivel <= this.nivel){
             Debug.Log("Nivel: " + nivel);
             SceneManager.LoadScene(nivel);
-        }else{
-            Debug.Log("Nivel: no desbloqueado");
-        }
+        //}else{
+        //    Debug.Log("Nivel: no desbloqueado");
+        //}
     }
 
     public void Salir(){

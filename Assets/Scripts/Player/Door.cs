@@ -33,6 +33,9 @@ public class DoorInteractive : MonoBehaviour, IInteractable
             isOpen = true;
             // Aquí podrías añadir una animación de apertura
             StartCoroutine(OpenDoor());
+
+            // disable the collider
+            GetComponent<Collider>().enabled = false;
         }
     }
 

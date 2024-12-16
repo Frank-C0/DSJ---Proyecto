@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 919377939162450041}
+  - component: {fileID: 5884535546254301198}
   m_Layer: 0
   m_Name: eyes
   m_TagString: Untagged
@@ -31,6 +32,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8142007194097016341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5884535546254301198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613121480027185198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc1436997830ea42a2a54e5708e04d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockUnitPrefab: {fileID: 0}
+  flockSize: 7
+  spawnBounds: {x: 4, y: 0.1, z: 4}
+  _minSpeed: 5.6
+  _maxSpeed: 9.1
+  _cohesionDistance: 4.6
+  _avoidanceDistance: 3.7
+  _aligementDistance: 3.8
+  _obstacleDistance: 6.9
+  _boundsDistance: 26
+  _cohesionWeight: 2.9
+  _avoidanceWeight: 1.9
+  _aligementWeight: 0
+  _boundsWeight: 7.1
+  _obstacleWeight: 100
+  target: {fileID: 0}
+  _targetWeight: 2.8
 --- !u!1001 &8607646740179237374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +237,8 @@ MonoBehaviour:
   Agent: {fileID: 0}
   Animator: {fileID: 3533354461774365811}
   Vision: {fileID: 0}
+  soundListener: {fileID: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &4096480501547317069
 Rigidbody:
   m_ObjectHideFlags: 0
