@@ -334,7 +334,7 @@ MonoBehaviour:
   soundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  baseVolume: 0.8
+  baseVolume: 1.4
   duration: 0
   frequency: 1
   soundType: default

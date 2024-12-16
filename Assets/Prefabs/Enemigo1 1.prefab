@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae3db8cd37a56b43a33213ce00b3ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 2
-  RunSpeed: 5
+  WalkSpeed: 2.5
+  RunSpeed: 6
   Waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -392,7 +392,7 @@ CapsuleCollider:
   m_Radius: 0.83
   m_Height: 3.94
   m_Direction: 2
-  m_Center: {x: 0.04, y: 1.16, z: -0.86}
+  m_Center: {x: 0.04, y: 1.16, z: 0.86}
 --- !u!114 &5694557604200757602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,8 +406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyes: {fileID: 8478709374418850442}
-  detectionRange: 10.7
-  fieldOfViewAngle: 30
+  detectionRange: 13.2
+  fieldOfViewAngle: 203.4
 --- !u!114 &3804361596999827643
 MonoBehaviour:
   m_ObjectHideFlags: 0
